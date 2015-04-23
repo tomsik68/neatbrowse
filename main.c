@@ -1,11 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <ncurses.h>
 #include "filesystem.h"
 
 
 
-int main(char** argv, int argc){
-    char* currPath = "$HOME";
+int main(int argc, char** argv){
+
+    char* currentDir = "";
+    if(argc > 1){
+        currentDir = argv[1];
+    } else {
+        currentDir = getenv("HOME");
+    }
     initscr();
     clear();
     cbreak();
@@ -16,6 +23,7 @@ int main(char** argv, int argc){
     int choice = 0;
     int num_choices = 2;
     while(inKey != KEY_ENTER){
+        printw("Current Directory: %s\n", currentDir);
         inKey = getch();
         switch(inKey){
             case KEY_UP:
