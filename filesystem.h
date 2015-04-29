@@ -4,7 +4,7 @@
 Concatenates two paths.
 If s1 is "/home/user" and s2 "Documents", the result is "/home/user/Documents"
 */
-char* pathConcat(char* s1, char* s2);
+char* pathConcat( char* s1, char* s2);
 
 /**
 Returns 1 if the specified file can be entered(is directory? + has permission?). 0 otherwise

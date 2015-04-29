@@ -1,15 +1,18 @@
 all: neatbrowse
 
-CFLAGS=-std=c99 -I/usr/include -L/lib -L/usr/lib -lncurses -Wall
+CFLAGS=-std=c99 -g -I/usr/include -L/lib -L/usr/lib -Wall
 
-filesystem.o: filesystem.c filesystem.h
+filesystem.o: filesystem.c
 	gcc $(CFLAGS) -c filesystem.c
 
-main.o: main.c filesystem.o
+main.o: main.c
 	gcc $(CFLAGS) -c main.c
 
-clean:
-	rm main.o neatbrowse
+terminal.o: terminal.c
+	gcc $(FLAGS) -c terminal.c
 
-neatbrowse: main.o
-	gcc $(CFLAGS) main.o filesystem.o -o neatbrowse
+clean:
+	rm main.o filesystem.o terminal.o neatbrowse
+
+neatbrowse: main.o filesystem.o terminal.o
+	gcc $(CFLAGS) main.o filesystem.o terminal.o -o neatbrowse
