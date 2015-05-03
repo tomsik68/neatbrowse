@@ -58,10 +58,7 @@ int main(int argc, char** argv){
                     entryCount = listDirectory(currentDir, files);
                     chosenFile = NULL;
                     choice = 0;
-                } else {
-                    chosen = 1;
-                    chosenFile = destPath;
-                } 
+                }
             break;
             case 'a':
                 destPath = pathConcat(currentDir, files[0][choice]);
