@@ -4,6 +4,11 @@
 #include <unistd.h>
 #include "terminal.h"
 
+// utilities
+#define MAX(a,b) ((a > b) ? a : b)
+#define MIN(a,b) ((a < b) ? a : b)
+
+
 int main(int argc, char** argv){
     char* currentDir = "";
     if(argc > 1){
@@ -24,13 +29,19 @@ int main(int argc, char** argv){
     while(chosen == 0){
         if(choice >= entryCount) { choice = 0; }
         if(choice < 0) { choice = entryCount - 1; }
-        for(int i = 0; i < entryCount; i++){
-            if(i == choice)
-                fprintf(stderr, "*");
-            fprintf(stderr,"%s ", files[0][i]);
+        for(int i = MAX(choice-2, 0); i < MIN(choice+3,entryCount-1); i++){
+            if(i == choice){
+                fprintf(stderr," ->%s<- ", files[0][i]);
+            } else {
+                fprintf(stderr, "%s ", files[0][i]);
+            }                
         }
+        for(int i = 0; i < 80; ++i){
+            fprintf(stderr, " ");
+        }
+ 
         fprintf(stderr, "\r");
-    inKey = getc(stdin);
+        inKey = getch(stdin);
         switch(inKey){
             case 'h':
                 --choice;
@@ -58,7 +69,7 @@ int main(int argc, char** argv){
                 chosenFile = destPath;
             break;
         }
-    }
+   }
     puts(chosenFile);
     terminalCleanup();
     return 0;
