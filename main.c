@@ -18,7 +18,6 @@ int main(int argc, char** argv){
     }
 
     terminalInit();
-
     char inKey = ' ';
     int choice = 0;
     char*** files = malloc(sizeof(char**));
@@ -41,7 +40,7 @@ int main(int argc, char** argv){
         }
  
         fprintf(stderr, "\r");
-        inKey = getch(stdin);
+        inKey = getchar();
         switch(inKey){
             case 'h':
                 --choice;
