@@ -24,7 +24,6 @@ int main(int argc, char** argv){
     int entryCount = listDirectory(currentDir, files);
     int chosen = 0;
     char* chosenFile = NULL;
-    char* destPath;
     while(chosen == 0){
         if(choice >= entryCount) { choice = 0; }
         if(choice < 0) { choice = entryCount - 1; }
@@ -51,18 +50,18 @@ int main(int argc, char** argv){
             break;
 
             case 'o':
-                destPath = pathConcat(currentDir, files[0][choice]);
-                if(canEnter(destPath)){
-                    currentDir = destPath;
+                chosenFile = pathConcat(currentDir, files[0][choice]);
+                /* but only if it is a directory */
+                if(canEnter(chosenFile)){
+                    currentDir = chosenFile;
                     entryCount = listDirectory(currentDir, files);
                     chosenFile = NULL;
                     choice = 0;
                 }
             break;
             case 'a':
-                destPath = pathConcat(currentDir, files[0][choice]);
+                chosenFile = pathConcat(currentDir, files[0][choice]);
                 chosen = 1;
-                chosenFile = destPath;
             break;
         }
    }
