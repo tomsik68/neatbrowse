@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "filesystem.h"
 #include <unistd.h>
 #include "terminal.h"
 
-// utilities
+/* utilities */
 #define MAX(a,b) ((a > b) ? a : b)
 #define MIN(a,b) ((a < b) ? a : b)
 
@@ -24,17 +25,22 @@ int main(int argc, char** argv){
     int entryCount = listDirectory(currentDir, files);
     int chosen = 0;
     char* chosenFile = NULL;
+    unsigned int i;
+    
     while(chosen == 0){
         if(choice >= entryCount) { choice = 0; }
         if(choice < 0) { choice = entryCount - 1; }
-        for(int i = MAX(choice-2, 0); i < MIN(choice+3,entryCount-1); i++){
+
+        for(i = MAX(choice-2, 0); i < MIN(choice+3,entryCount-1); i++){
+            /* chosen filename is wrapped around by arrows ->ABC<- */
             if(i == choice){
                 fprintf(stderr," ->%s<- ", files[0][i]);
             } else {
                 fprintf(stderr, "%s ", files[0][i]);
             }                
         }
-        for(int i = 0; i < 80; ++i){
+
+        for(i = 0; i < 80; ++i){
             fprintf(stderr, " ");
         }
  

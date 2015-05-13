@@ -1,6 +1,6 @@
 all: neatbrowse
 
-CFLAGS=-std=c99 -g -I/usr/include -L/lib -L/usr/lib -Wall
+CFLAGS=-ansi -g -I/usr/include -L/lib -L/usr/lib -Wall
 
 filesystem.o: filesystem.c
 	$(CC) $(CFLAGS) -c filesystem.c

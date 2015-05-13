@@ -1,4 +1,4 @@
-// some platform-dependent code for handling filesystem operations
+/* some platform-dependent code for handling filesystem operations */
 
 /**
 Concatenates two paths.
