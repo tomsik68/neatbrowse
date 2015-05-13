@@ -2,6 +2,9 @@ neatbrowse
 ==========
 neatbrowse is a single-line file browser/chooser for *nix terminals.
 
+This is how easily you can get to file which is at ~/projects/tests/progtest/problem1.c:
+[gif animation](http://i.imgur.com/XAxxbfL.gif)
+
 # Why would I want this?
 
 1.) Shorten your cd commands!
